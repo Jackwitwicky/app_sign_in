@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PinActivity"
+    android:background="@color/colorBackground">
+
+    <RelativeLayout
+        android:id="@+id/pin_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp">
+        <LinearLayout
+            android:id="@+id/pin_row_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_one"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_two" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_three" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pin_row_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/pin_row_one">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_four"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_five" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_six" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pin_row_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/pin_row_two">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_seven"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_eight" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_nine" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pin_row_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/pin_row_three">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:text="@string/pin_cancel"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_zero"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/pinViewTheme"
+                android:text="@string/pin_nine"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_pin_check_black_24dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -7,4 +7,19 @@
     <string name="email_password_password">Password</string>
     <string name="email_password_forgot_password">Forgot Password</string>
     <string name="email_password_login_button">Login</string>
+
+<!--    pin activity screen-->
+    <string name="pin_zero">0</string>
+    <string name="pin_one">1</string>
+    <string name="pin_two">2</string>
+    <string name="pin_three">3</string>
+    <string name="pin_four">4</string>
+    <string name="pin_five">5</string>
+    <string name="pin_six">6</string>
+    <string name="pin_seven">7</string>
+    <string name="pin_eight">8</string>
+    <string name="pin_nine">9</string>
+    <string name="pin_ten">10</string>
+    <string name="pin_enter_pin_prompt">Enter Pin</string>
+    <string name="pin_cancel">Cancel</string>
 </resources>
