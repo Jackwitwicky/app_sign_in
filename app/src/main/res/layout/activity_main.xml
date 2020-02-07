@@ -64,6 +64,7 @@
         android:paddingRight="4dp"/>
 
     <TextView
+        android:id="@+id/email_password_pin_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email_password_pin_login"
@@ -72,6 +73,7 @@
         android:textSize="16sp"/>
 
     <TextView
+        android:id="@+id/email_password_fingerprint_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email_password_fingerprint_login"
