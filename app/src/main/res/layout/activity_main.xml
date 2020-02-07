@@ -52,6 +52,7 @@
 
 
     <Button
+        android:id="@+id/email_password_login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/email_password_password_field"
@@ -61,5 +62,25 @@
         android:textColor="@android:color/white"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"/>
+
+    <TextView
+        android:id="@+id/email_password_pin_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_password_pin_login"
+        android:layout_below="@id/email_password_login_button"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/email_password_fingerprint_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_password_fingerprint_login"
+        android:layout_below="@id/email_password_login_button"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
