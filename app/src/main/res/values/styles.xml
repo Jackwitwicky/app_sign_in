@@ -28,5 +28,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <!-- This style is for the splash screen -->
 
 </resources>
