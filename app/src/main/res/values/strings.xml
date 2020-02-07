@@ -10,7 +10,7 @@
     <string name="email_password_pin_login">Sign in With Pin</string>
     <string name="email_password_fingerprint_login">Sign in With Fingerprint</string>
 
-<!--    pin activity screen-->
+    <!--    pin activity screen-->
     <string name="pin_zero">0</string>
     <string name="pin_one">1</string>
     <string name="pin_two">2</string>

@@ -5,12 +5,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 29 //checks the compiled sdk version
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.jacknkiarie.signinui"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 29 //the sdk version the app with run on
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -19,9 +19,16 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
+//this is all the shit that android will support
+// i don't know what to do and i ma panicking
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
