@@ -7,6 +7,8 @@
     <string name="email_password_password">Password</string>
     <string name="email_password_forgot_password">Forgot Password</string>
     <string name="email_password_login_button">Login</string>
+    <string name="email_password_pin_login">Sign in With Pin</string>
+    <string name="email_password_fingerprint_login">Sign in With Fingerprint</string>
 
 <!--    pin activity screen-->
     <string name="pin_zero">0</string>
@@ -22,4 +24,5 @@
     <string name="pin_ten">10</string>
     <string name="pin_enter_pin_prompt">Enter Pin</string>
     <string name="pin_cancel">Cancel</string>
+
 </resources>
