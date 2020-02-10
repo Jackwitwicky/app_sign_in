@@ -39,7 +39,7 @@
                 android:text="@string/pin_three" />
         </LinearLayout>
 
-        <LinearLayout
+        <LinearLayoutg
             android:id="@+id/pin_row_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
                 android:text="@string/pin_six" />
-        </LinearLayout>
+        </LinearLayoutg>
 
         <LinearLayout
             android:id="@+id/pin_row_three"
