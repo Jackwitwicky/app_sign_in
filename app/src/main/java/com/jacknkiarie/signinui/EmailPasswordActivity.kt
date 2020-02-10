@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_email_password.*
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.jacknkiarie.signinui.models.FormValidator
+import com.jacknkiarie.signinui.models.SignInUI
 import java.util.concurrent.Executor
 
 class EmailPasswordActivity : AppCompatActivity() {
@@ -17,6 +19,7 @@ class EmailPasswordActivity : AppCompatActivity() {
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private var passwordLength: Int = SignInUI.DEFAULT_PASSWORD_LENGTH
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +44,34 @@ class EmailPasswordActivity : AppCompatActivity() {
             }
         }
 
+        setupUI()
         setupFingerprintSensor()
+    }
+
+    private fun setupUI() {
+        val isPinEnabled = intent.getBooleanExtra(SignInUI.EXTRA_IS_PIN_ENABLED, false)
+        val isFingerprintEnabled = intent.getBooleanExtra(SignInUI.EXTRA_IS_FINGEPRINT_ENABLED, false)
+        val title = intent.getStringExtra(SignInUI.EXTRA_TITLE)
+        val subtitle = intent.getStringExtra(SignInUI.EXTRA_SUBTITLE)
+        passwordLength = intent.getIntExtra(SignInUI.EXTRA_PASSWORD_LENGTH, SignInUI.DEFAULT_PASSWORD_LENGTH)
+
+        if(title != null && title.isNotEmpty()) {
+            email_password_welcome.text = title
+        }
+
+        if(subtitle != null && subtitle.isNotEmpty()) {
+            email_password_intro.text = subtitle
+        }
+
+        if (!isPinEnabled) {
+            email_password_pin_login.visibility = View.GONE
+        }
+
+        if (!isFingerprintEnabled) {
+            email_password_fingerprint_login.visibility = View.GONE
+        }
+
+
     }
 
     private fun validateFields() : Boolean {
@@ -52,7 +82,7 @@ class EmailPasswordActivity : AppCompatActivity() {
             email_password_email_field.error = emailValidator.responseMessage
         }
 
-        val passwordValidator = formValidator.validatePassword(email_password_password_field.text.toString())
+        val passwordValidator = formValidator.validatePassword(email_password_password_field.text.toString(), passwordLength)
         if(!passwordValidator.isFormValid()) {
             email_password_password_field.error = passwordValidator.responseMessage
         }

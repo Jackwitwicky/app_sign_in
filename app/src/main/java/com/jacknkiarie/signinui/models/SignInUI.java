@@ -12,6 +12,9 @@ public class SignInUI {
     public static final String PIN_FORM = "PIN_FORM";
     public static final String FINGEPRINT_FORM = "FINGERPRINT_FORM";
 
+    public static final int DEFAULT_PASSWORD_LENGTH = 4;
+    public static final int DEFAULT_PIN_LENGTH = 4;
+
     // variables used when passing data to various activities via intents
     public static final String EXTRA_PASSWORD_LENGTH = "EXTRA_PASSWORD_LENGTH";
     public static final String EXTRA_PIN_LENGTH = "EXTRA_PIN_LENGTH";
@@ -55,8 +58,8 @@ public class SignInUI {
         private String signInType;
         private String title = "";
         private String subtitle = "";
-        private int passwordLength = 4;
-        private int pinLength = 4;
+        private int passwordLength = DEFAULT_PASSWORD_LENGTH;
+        private int pinLength = DEFAULT_PIN_LENGTH;
         private boolean isEmailSignInEnabled = false;
         private boolean isPinSignInEnabled = false;
         private boolean isFingerprintSignInEnabled = false;
