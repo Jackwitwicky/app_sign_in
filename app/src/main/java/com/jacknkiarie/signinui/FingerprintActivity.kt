@@ -13,10 +13,10 @@ class FingerprintActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fingerprint)
 
         var fingerprintWrapper = FingerprintWrapper(this)
-        fingerprintWrapper.checkFingerprintSupport()
+        fingerprintWrapper.checkFingerprintSupportAndAuthenticate()
 
         fingerprint_prompt_button.setOnClickListener {
-            fingerprintWrapper.checkFingerprintSupport()
+            fingerprintWrapper.checkFingerprintSupportAndAuthenticate()
         }
 
         fingerprint_pin_login.setOnClickListener {

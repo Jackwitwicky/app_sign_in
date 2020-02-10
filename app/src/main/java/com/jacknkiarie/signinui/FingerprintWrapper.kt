@@ -55,7 +55,7 @@ class FingerprintWrapper(val context: AppCompatActivity) {
 
     }
 
-    fun checkFingerprintSupport() {
+    fun checkFingerprintSupportAndAuthenticate() {
         val biometricManager = BiometricManager.from(context)
         when (biometricManager.canAuthenticate()) {
             BiometricManager.BIOMETRIC_SUCCESS -> {
