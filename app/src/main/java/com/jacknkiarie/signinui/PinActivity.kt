@@ -79,6 +79,7 @@ class PinActivity : AppCompatActivity() {
         else if(view.id == R.id.email_password_pin_login){
             val homeIntent = Intent(this,EmailPasswordActivity::class.java)
             startActivity(homeIntent)
+            finish()
         }
 
 
@@ -87,6 +88,7 @@ class PinActivity : AppCompatActivity() {
                 Toast.makeText(this@PinActivity, "Welcome", Toast.LENGTH_SHORT).show()
                 val homeIntent = Intent(this,EmailPasswordActivity::class.java)
                 startActivity(homeIntent)
+                finish()
             }
 
         }

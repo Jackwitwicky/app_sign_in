@@ -60,7 +60,7 @@ class FormValidator(val context: Context) {
             isFormValid = false
 
         } else if(pinString.trim().length < 4){
-            errorResponseMessage = "Pin cannot be more than 4"
+            errorResponseMessage = "Pin cannot be less than 4"
             pinValidatorResponse.status = ValidatorResponse.STATUS_ERROR
             isFormValid = false
         }
