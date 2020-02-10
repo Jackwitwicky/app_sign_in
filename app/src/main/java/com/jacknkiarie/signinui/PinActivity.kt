@@ -1,8 +1,10 @@
 package com.jacknkiarie.signinui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_pin.*
 
 class PinActivity : AppCompatActivity() {
@@ -51,21 +53,28 @@ class PinActivity : AppCompatActivity() {
             currentPinInput += "9"
             pin_verification_code.setText(currentPinInput)
         }
+        else if(view.id == R.id.pin_zero){
+            currentPinInput += "0"
+            pin_verification_code.setText(currentPinInput)
+        }
 
         if (view.id == R.id.pin_check_btn){
 
+            Toast.makeText(this@PinActivity, "Welcome", Toast.LENGTH_SHORT).show()
+
+            val homeIntent = Intent(this,EmailPasswordActivity::class.java)
+                startActivity(homeIntent)
+
+        }
+        else if (view.id == R.id.pin_cancel_btn){
+
+            Toast.makeText(this@PinActivity, "Validation by Pin canceled", Toast.LENGTH_SHORT).show()
+
+            val homeIntent = Intent(this,EmailPasswordActivity::class.java)
+            startActivity(homeIntent)
         }
 
-    }
-
-
-
-
-
-
-
-
-
+        }
 
 
 }

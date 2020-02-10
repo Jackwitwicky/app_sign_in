@@ -119,6 +119,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_margin="20dp"
+                android:onClick="onClick"
                 android:id="@+id/pin_cancel_btn"
                 android:text="@string/pin_cancel"/>
 
@@ -126,14 +127,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_zero"/>
+                android:id="@+id/pin_zero"
+                android:text="@string/pin_zero"
+                android:onClick="onClick"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/pin_check_btn"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_nine"
+                android:onClick="onClick"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_pin_check_black_24dp"/>
         </LinearLayout>
