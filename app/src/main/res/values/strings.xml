@@ -29,7 +29,7 @@
     <string name="pin_enter_pin_prompt">Enter Pin</string>
     <string name="pin_cancel">Cancel</string>
 
-<!--    finger print values-->
+    <!--    finger print values-->
     <string name="error_fingerprint_not_present">Sorry. Your device does not support fingerprint sign in</string>
     <string name="error_fingerprint_not_setup">Please setup your fingerprint in settings to use this feature</string>
     <string name="error_fingerprint_not_available">Fingerprint features are currently unavailable.</string>

@@ -8,30 +8,58 @@ import com.jacknkiarie.signinui.PinActivity;
 
 public class SignInUI {
     // constants
-    public static final String EMAIL_PASSWORD = "EMAIL_PASSWORD";
-    public static final String PIN = "PIN";
-    public static final String FINGEPRINT = "FINGERPRINT";
+    public static final String EMAIL_PASSWORD_FORM = "EMAIL_PASSWORD_FORM";
+    public static final String PIN_FORM = "PIN_FORM";
+    public static final String FINGEPRINT_FORM = "FINGERPRINT_FORM";
+
+    // variables used when passing data to various activities via intents
+    public static final String EXTRA_PASSWORD_LENGTH = "EXTRA_PASSWORD_LENGTH";
+    public static final String EXTRA_PIN_LENGTH = "EXTRA_PIN_LENGTH";
+    public static final String EXTRA_TITLE = "EXTRA_TITLE";
+    public static final String EXTRA_SUBTITLE = "EXTRA_SUBTITLE";
+    public static final String EXTRA_IS_PIN_ENABLED = "EXTRA_IS_PIN_ENABLED";
+    public static final String EXTRA_IS_EMAIL_ENABLED = "EXTRA_IS_EMAIL_ENABLED";
+    public static final String EXTRA_IS_FINGEPRINT_ENABLED = "EXTRA_IS_FINGEPRINT_ENABLED";
 
     private String signInType;
 
     private SignInUI(final Builder builder) {
         signInType = builder.signInType;
 
-        if (signInType.equals(EMAIL_PASSWORD)) {
+        if (signInType == null || signInType.isEmpty()) {
+            throw new IllegalStateException("The Sign In Type Parameter must be provided");
+        }
+
+        if (signInType.equals(EMAIL_PASSWORD_FORM)) {
             Intent emailIntent = new Intent(builder.context, EmailPasswordActivity.class);
+            emailIntent.putExtra(EXTRA_TITLE, builder.title);
+            emailIntent.putExtra(EXTRA_SUBTITLE, builder.subtitle);
+            emailIntent.putExtra(EXTRA_PASSWORD_LENGTH, builder.passwordLength);
+            emailIntent.putExtra(EXTRA_IS_PIN_ENABLED, builder.isPinSignInEnabled);
+            emailIntent.putExtra(EXTRA_IS_FINGEPRINT_ENABLED, builder.isFingerprintSignInEnabled);
             builder.context.startActivity(emailIntent);
         }
-        else if(signInType.equals(PIN)) {
+        else if(signInType.equals(PIN_FORM)) {
             Intent pinIntent = new Intent(builder.context, PinActivity.class);
+            pinIntent.putExtra(EXTRA_TITLE, builder.title);
+            pinIntent.putExtra(EXTRA_SUBTITLE, builder.subtitle);
+            pinIntent.putExtra(EXTRA_PIN_LENGTH, builder.pinLength);
+            pinIntent.putExtra(EXTRA_IS_EMAIL_ENABLED, builder.isEmailSignInEnabled);
+            pinIntent.putExtra(EXTRA_IS_FINGEPRINT_ENABLED, builder.isFingerprintSignInEnabled);
             builder.context.startActivity(pinIntent);
         }
     }
 
-    static class Builder {
+    public static class Builder {
         private Context context;
         private String signInType;
-        private int passwordLength;
-        private int pinLength;
+        private String title = "";
+        private String subtitle = "";
+        private int passwordLength = 4;
+        private int pinLength = 4;
+        private boolean isEmailSignInEnabled = false;
+        private boolean isPinSignInEnabled = false;
+        private boolean isFingerprintSignInEnabled = false;
 
         public Builder(Context context) {
             this.context = context;
@@ -49,6 +77,31 @@ public class SignInUI {
 
         public Builder setPinLength(final int pinLength) {
             this.pinLength = pinLength;
+            return this;
+        }
+
+        public Builder setTitle(final String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder setSubtitle(final String subtitle) {
+            this.subtitle = subtitle;
+            return this;
+        }
+
+        public Builder setEmailSignInEnabled(boolean emailSignInEnabled) {
+            isEmailSignInEnabled = emailSignInEnabled;
+            return this;
+        }
+
+        public Builder setPinSignInEnabled(boolean pinSignInEnabled) {
+            isPinSignInEnabled = pinSignInEnabled;
+            return this;
+        }
+
+        public Builder setFingerprintSignInEnabled(boolean fingerprintSignInEnabled) {
+            isFingerprintSignInEnabled = fingerprintSignInEnabled;
             return this;
         }
 
