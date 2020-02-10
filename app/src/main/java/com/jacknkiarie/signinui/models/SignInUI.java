@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.jacknkiarie.signinui.EmailPasswordActivity;
+import com.jacknkiarie.signinui.FingerprintActivity;
 import com.jacknkiarie.signinui.PinActivity;
 
 public class SignInUI {
     // constants
     public static final String EMAIL_PASSWORD_FORM = "EMAIL_PASSWORD_FORM";
     public static final String PIN_FORM = "PIN_FORM";
-    public static final String FINGEPRINT_FORM = "FINGERPRINT_FORM";
+    public static final String FINGERPRINT_FORM = "FINGERPRINT_FORM";
 
     public static final int DEFAULT_PASSWORD_LENGTH = 4;
     public static final int DEFAULT_PIN_LENGTH = 4;
@@ -50,6 +51,14 @@ public class SignInUI {
             pinIntent.putExtra(EXTRA_IS_EMAIL_ENABLED, builder.isEmailSignInEnabled);
             pinIntent.putExtra(EXTRA_IS_FINGEPRINT_ENABLED, builder.isFingerprintSignInEnabled);
             builder.context.startActivity(pinIntent);
+        }
+        else if(signInType.equals(FINGERPRINT_FORM)) {
+            Intent fingerprintIntent = new Intent(builder.context, FingerprintActivity.class);
+            fingerprintIntent.putExtra(EXTRA_TITLE, builder.title);
+            fingerprintIntent.putExtra(EXTRA_SUBTITLE, builder.subtitle);
+            fingerprintIntent.putExtra(EXTRA_IS_EMAIL_ENABLED, builder.isEmailSignInEnabled);
+            fingerprintIntent.putExtra(EXTRA_IS_PIN_ENABLED, builder.isPinSignInEnabled);
+            builder.context.startActivity(fingerprintIntent);
         }
     }
 
@@ -108,7 +117,7 @@ public class SignInUI {
             return this;
         }
 
-        public SignInUI create() {
+        public SignInUI build() {
             return new SignInUI(this);
         }
     }
