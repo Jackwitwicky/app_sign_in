@@ -7,17 +7,11 @@ import kotlinx.android.synthetic.main.activity_email_password.*
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricPrompt
 
 import com.jacknkiarie.signinui.models.FormValidator
 import com.jacknkiarie.signinui.models.SignInUI
-import java.util.concurrent.Executor
 
 class EmailPasswordActivity : AppCompatActivity() {
-
-    private lateinit var executor: Executor
-    private lateinit var biometricPrompt: BiometricPrompt
-    private lateinit var promptInfo: BiometricPrompt.PromptInfo
     private var passwordLength: Int = SignInUI.DEFAULT_PASSWORD_LENGTH
 
 
