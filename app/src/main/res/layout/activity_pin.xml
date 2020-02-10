@@ -27,16 +27,20 @@
                 android:onClick="onClick"/>
 
             <TextView
+                android:id="@+id/pin_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_two" />
+                android:text="@string/pin_two"
+                android:onClick="onClick"/>
 
             <TextView
+                android:id="@+id/pin_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_three" />
+                android:text="@string/pin_three"
+                android:onClick="onClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -46,23 +50,30 @@
             android:orientation="horizontal"
             android:layout_below="@id/pin_row_one">
             <TextView
+                android:id="@+id/pin_four"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_four"/>
+                android:text="@string/pin_four"
+                android:onClick="onClick"/>
 
             <TextView
+                android:id="@+id/pin_five"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_five" />
+                android:text="@string/pin_five"
+                android:onClick="onClick"/>
 
             <TextView
+                android:id="@+id/pin_six"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_six" />
+                android:text="@string/pin_six"
+                android:onClick="onClick" />
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/pin_row_three"
@@ -71,22 +82,28 @@
             android:orientation="horizontal"
             android:layout_below="@id/pin_row_two">
             <TextView
+                android:id="@+id/pin_seven"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_seven"/>
+                android:text="@string/pin_seven"
+                android:onClick="onClick"/>
 
             <TextView
+                android:id="@+id/pin_eight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_eight" />
+                android:text="@string/pin_eight"
+                android:onClick="onClick"/>
 
             <TextView
+                android:id="@+id/pin_nine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_nine" />
+                android:text="@string/pin_nine"
+                android:onClick="onClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -103,22 +120,52 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_margin="20dp"
+                android:onClick="onClick"
+                android:id="@+id/pin_cancel_btn"
                 android:text="@string/pin_cancel"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_zero"/>
+                android:id="@+id/pin_zero"
+                android:text="@string/pin_zero"
+                android:onClick="onClick"/>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/pin_check_btn"
                 style="@style/pinViewTheme"
-                android:text="@string/pin_nine"
+                android:onClick="onClick"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_pin_check_black_24dp"/>
+
         </LinearLayout>
+        <TextView
+            android:id="@+id/email_password_pin_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_pin_login"
+            android:layout_below="@id/pin_row_four"
+            android:layout_marginTop="30dp"
+            android:padding="20dp"
+            android:onClick="onClick"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/email_password_fingerprint_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_password_fingerprint_login"
+            android:layout_below="@id/pin_row_four"
+            android:layout_marginTop="30dp"
+            android:padding="20dp"
+            android:onClick="onClick"
+            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
     </RelativeLayout>
 
     <com.jacknkiarie.signinui.PinEntryEditText
