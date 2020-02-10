@@ -76,6 +76,10 @@ class PinActivity : AppCompatActivity() {
             pin_verification_code.setText(initpin)
 
         }
+        else if(view.id == R.id.email_password_pin_login){
+            val homeIntent = Intent(this,EmailPasswordActivity::class.java)
+            startActivity(homeIntent)
+        }
 
 
         pin_check_btn.setOnClickListener{
