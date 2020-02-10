@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TestActivity"
+    android:padding="30dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Sign In UI"
+            android:textSize="16sp"
+            android:layout_marginBottom="10dp"/>
+        <Button
+            android:id="@+id/email_only"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="email only UI"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/email_with_pin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="email with pin UI"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/email_with_pin_and_fingerprint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="email with pin and biometric UI"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PIN Sign In UI"
+            android:textSize="16sp"
+            android:layout_marginBottom="10dp"/>
+        <Button
+            android:id="@+id/pin_only"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="pin only UI"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/pin_with_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="pin with email UI"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/pin_with_email_and_fingerprint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="pin with email and biometric UI"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biometric Sign In UI"
+            android:textSize="16sp"
+            android:layout_marginBottom="10dp"/>
+        <Button
+            android:id="@+id/fingerprint_only"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="biometric only UI"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/fingerprint_with_pin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="biometric with pin UI"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/fingerprint_with_pin_and_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="biometric with pin and password UI"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+</ScrollView>
