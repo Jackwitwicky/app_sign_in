@@ -77,17 +77,14 @@ class PinActivity : AppCompatActivity() {
 
         }
 
-        if (view.id == R.id.pin_check_btn){
-
-            Toast.makeText(this@PinActivity, "Welcome", Toast.LENGTH_SHORT).show()
-
-            val homeIntent = Intent(this,EmailPasswordActivity::class.java)
-                startActivity(homeIntent)
-
-        }
 
         pin_check_btn.setOnClickListener{
-            validateFields()
+            if (validateFields()) {
+                Toast.makeText(this@PinActivity, "Welcome", Toast.LENGTH_SHORT).show()
+                val homeIntent = Intent(this,EmailPasswordActivity::class.java)
+                startActivity(homeIntent)
+            }
+
         }
 
 
@@ -99,6 +96,8 @@ class PinActivity : AppCompatActivity() {
         val pinValidator = formValidator.validatePin(pin_verification_code.text.toString())
         if (!pinValidator.isFormValid()) {
             pin_verification_code.error = pinValidator.responseMessage
+            Toast.makeText(this@PinActivity, pin_verification_code.error, Toast.LENGTH_SHORT).show()
+
         }
 
         return formValidator.isFormValid
