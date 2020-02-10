@@ -43,7 +43,7 @@
                 android:onClick="onClick"/>
         </LinearLayout>
 
-        <LinearLayoutg
+        <LinearLayout
             android:id="@+id/pin_row_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,14 +70,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/pinViewTheme"
-<<<<<<< HEAD
                 android:text="@string/pin_six"
-                android:onClick="onClick"/>
+                android:onClick="onClick" />
         </LinearLayout>
-=======
-                android:text="@string/pin_six" />
-        </LinearLayoutg>
->>>>>>> master
+
 
         <LinearLayout
             android:id="@+id/pin_row_three"

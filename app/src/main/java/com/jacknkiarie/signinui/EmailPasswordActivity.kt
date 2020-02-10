@@ -1,8 +1,6 @@
 package com.jacknkiarie.signinui
 
 import android.content.Intent
-import android.hardware.biometrics.BiometricManager
-import android.hardware.biometrics.BiometricPrompt
 
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_email_password.*
@@ -11,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
+
 import androidx.core.content.ContextCompat
 import com.jacknkiarie.signinui.models.FormValidator
 import java.util.concurrent.Executor
