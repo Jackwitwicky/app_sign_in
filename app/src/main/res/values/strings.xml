@@ -9,10 +9,13 @@
     <string name="email_password_login_button">Login</string>
     <string name="email_password_pin_login">Use Pin</string>
     <string name="email_password_fingerprint_login">Use Fingerprint</string>
+    <string name="email_pin_login">Use Password</string>
+    <string name="email_pin_fingerprint_login">Use Fingerprint</string>
     <string name="error_email_password_blank_email">Email cannot be blank</string>
     <string name="error_email_password_invalid_email_format">Email has invalid format</string>
     <string name="error_email_password_blank_password">Password cannot be blank</string>
     <string name="error_email_password_invalid_password_length">Password cannot be shorter than 4</string>
+
 
     <!--    pin activity screen-->
     <string name="pin_zero">0</string>

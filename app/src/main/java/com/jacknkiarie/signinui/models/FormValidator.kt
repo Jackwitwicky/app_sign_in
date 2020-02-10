@@ -49,4 +49,22 @@ class FormValidator(val context: Context) {
 
         return passwordValidatorResponse
     }
+
+    fun validatePin(pinString: String): ValidatorResponse{
+        val pinValidatorResponse = ValidatorResponse(ValidatorResponse.STATUS_OK)
+        var errorResponseMessage = ""
+
+        if(TextUtils.isEmpty(pinString.trim())){
+            errorResponseMessage = "Pin cannot be blank"
+            pinValidatorResponse.status = ValidatorResponse.STATUS_ERROR
+            isFormValid = false
+
+        } else if(pinString.trim().length < 4){
+            errorResponseMessage = "Pin cannot be more than 4"
+            pinValidatorResponse.status = ValidatorResponse.STATUS_ERROR
+            isFormValid = false
+        }
+        pinValidatorResponse.responseMessage = errorResponseMessage
+        return pinValidatorResponse
+    }
 }
