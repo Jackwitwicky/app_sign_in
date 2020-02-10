@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import com.jacknkiarie.signinui.models.FormValidator
 import java.util.concurrent.Executor
 
 class EmailPasswordActivity : AppCompatActivity() {
@@ -31,7 +32,32 @@ class EmailPasswordActivity : AppCompatActivity() {
             checkFingerprintSupport()
         }
 
+        email_password_login_button.setOnClickListener{
+            if(validateFields()) {
+                Toast.makeText(this@EmailPasswordActivity, "Okay", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this@EmailPasswordActivity, "Not okay", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         setupFingerprintSensor()
+    }
+
+    private fun validateFields() : Boolean {
+        val formValidator = FormValidator(this@EmailPasswordActivity)
+
+        val emailValidator = formValidator.validateEmail(email_password_email_field.text.toString())
+        if (!emailValidator.isFormValid()) {
+            email_password_email_field.error = emailValidator.responseMessage
+        }
+
+        val passwordValidator = formValidator.validatePassword(email_password_password_field.text.toString())
+        if(!passwordValidator.isFormValid()) {
+            email_password_password_field.error = passwordValidator.responseMessage
+        }
+
+        return formValidator.isFormValid
     }
 
     fun checkFingerprintSupport() {
