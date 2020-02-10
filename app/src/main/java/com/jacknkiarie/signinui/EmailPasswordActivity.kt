@@ -32,10 +32,9 @@ class EmailPasswordActivity : AppCompatActivity() {
 
         email_password_login_button.setOnClickListener{
             if(validateFields()) {
-                Toast.makeText(this@EmailPasswordActivity, "Okay", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                Toast.makeText(this@EmailPasswordActivity, "Not okay", Toast.LENGTH_SHORT).show()
+                var emailIntent = Intent()
+//                emailIntent.putExtra(SignInUI.PARAM_EMAIL, email)
+//                setResult(SignInUI.RESULT_OK, )
             }
         }
 

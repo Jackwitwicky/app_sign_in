@@ -12,6 +12,8 @@ public class SignInUI {
     public static final String EMAIL_PASSWORD_FORM = "EMAIL_PASSWORD_FORM";
     public static final String PIN_FORM = "PIN_FORM";
     public static final String FINGERPRINT_FORM = "FINGERPRINT_FORM";
+    public static final int RESULT_OK = 69;
+    public static final int RESULT_CANCEL = 77;
 
     public static final int DEFAULT_PASSWORD_LENGTH = 4;
     public static final int DEFAULT_PIN_LENGTH = 4;
@@ -24,6 +26,9 @@ public class SignInUI {
     public static final String EXTRA_IS_PIN_ENABLED = "EXTRA_IS_PIN_ENABLED";
     public static final String EXTRA_IS_EMAIL_ENABLED = "EXTRA_IS_EMAIL_ENABLED";
     public static final String EXTRA_IS_FINGEPRINT_ENABLED = "EXTRA_IS_FINGEPRINT_ENABLED";
+
+    public static final String PARAM_EMAIL = "PARAM_EMAIL";
+    public static final String PARAM_PASSWORD = "PARAM_PASSWORD";
 
     private String signInType;
 
