@@ -3,12 +3,11 @@ package com.jacknkiarie.signinui.models
 import android.content.Context
 import android.text.TextUtils
 import android.util.Patterns
-import android.widget.Toast
 import com.jacknkiarie.signinui.R
 import java.util.regex.Pattern
 
 
-class FormValidator(val context: Context) {
+class FormValidator(private val context: Context) {
 
     var isFormValid: Boolean  = true
 
@@ -32,7 +31,7 @@ class FormValidator(val context: Context) {
         return emailValidatorResponse
     }
 
-    fun validatePassword(passwordString: String) : ValidatorResponse {
+    fun validatePassword(passwordString: String, passwordLength: Int) : ValidatorResponse {
         val passwordValidatorResponse = ValidatorResponse(ValidatorResponse.STATUS_OK)
         var errorResponseMessage = ""
 
@@ -40,8 +39,8 @@ class FormValidator(val context: Context) {
             errorResponseMessage = context.getString(R.string.error_email_password_blank_password)
             passwordValidatorResponse.status = ValidatorResponse.STATUS_ERROR
             isFormValid = false
-        }else if (passwordString.trim().length < 4) {
-            errorResponseMessage = context.getString(R.string.error_email_password_invalid_password_length)
+        }else if (passwordString.trim().length < passwordLength) {
+            errorResponseMessage = String.format(context.getString(R.string.error_email_password_invalid_password_length), passwordLength)
             passwordValidatorResponse.status = ValidatorResponse.STATUS_ERROR
             isFormValid = false
         }

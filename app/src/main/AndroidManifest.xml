@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PinActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EmailPasswordActivity"
             android:theme="@style/AppTheme.NoActionBar">
