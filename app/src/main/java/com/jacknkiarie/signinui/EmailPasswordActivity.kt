@@ -32,10 +32,12 @@ class EmailPasswordActivity : AppCompatActivity() {
 
         email_password_login_button.setOnClickListener{
             if(validateFields()) {
-                Toast.makeText(this@EmailPasswordActivity, "Okay", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                Toast.makeText(this@EmailPasswordActivity, "Not okay", Toast.LENGTH_SHORT).show()
+                val emailIntent = Intent()
+                emailIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.EMAIL_PASSWORD_FORM)
+                emailIntent.putExtra(SignInUI.PARAM_EMAIL, email_password_email_field.text.toString())
+                emailIntent.putExtra(SignInUI.PARAM_PASSWORD, email_password_password_field.text.toString())
+                setResult(SignInUI.RESULT_OK, emailIntent)
+                finish()
             }
         }
 
@@ -80,5 +82,13 @@ class EmailPasswordActivity : AppCompatActivity() {
         }
 
         return formValidator.isFormValid
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val emailIntent = Intent()
+        emailIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.EMAIL_PASSWORD_FORM)
+        setResult(SignInUI.RESULT_CANCEL, emailIntent)
+        finish()
     }
 }
