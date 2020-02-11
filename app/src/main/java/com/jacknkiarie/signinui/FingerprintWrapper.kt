@@ -28,13 +28,16 @@ class FingerprintWrapper(val context: AppCompatActivity) {
                 override fun onAuthenticationError(errorCode: Int,
                                                    errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(context,
-                        "Authentication error: $errString", Toast.LENGTH_SHORT)
-                        .show()
-                    val fingerprintIntent = Intent()
-                    fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
-                    context.setResult(SignInUI.RESULT_CANCEL, fingerprintIntent)
-                    context.finish()
+                    // check if the user has clicked to use alternative auth method
+                    if (errString != "Use account password") {
+                        Toast.makeText(context,
+                            "Authentication error: $errString", Toast.LENGTH_SHORT)
+                            .show()
+                        val fingerprintIntent = Intent()
+                        fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
+                        context.setResult(SignInUI.RESULT_CANCEL, fingerprintIntent)
+                        context.finish()
+                    }
                 }
 
                 override fun onAuthenticationSucceeded(
