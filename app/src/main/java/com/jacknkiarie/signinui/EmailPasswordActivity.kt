@@ -22,7 +22,7 @@ class EmailPasswordActivity : AppCompatActivity() {
 
         email_password_pin_login.setOnClickListener {
             val pinLoginIntent = Intent(this@EmailPasswordActivity, PinActivity::class.java)
-            startActivity(pinLoginIntent)
+            startActivityForResult(pinLoginIntent, SignInUI.REQUEST_CODE)
         }
 
         email_password_fingerprint_login.setOnClickListener {
@@ -88,6 +88,13 @@ class EmailPasswordActivity : AppCompatActivity() {
         val emailIntent = Intent()
         emailIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.EMAIL_PASSWORD_FORM)
         setResult(SignInUI.RESULT_CANCEL, emailIntent)
+        finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        setResult(resultCode, data)
         finish()
     }
 }

@@ -60,7 +60,6 @@ class FingerprintWrapper(val context: AppCompatActivity) {
                     val fingerprintIntent = Intent()
                     fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
                     context.setResult(SignInUI.RESULT_CANCEL, fingerprintIntent)
-                    context.finish()
                 }
             })
 
