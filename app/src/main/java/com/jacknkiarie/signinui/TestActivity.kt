@@ -51,6 +51,19 @@ class TestActivity : AppCompatActivity() {
 
 
 
+        pin_only.setOnClickListener {
+            SignInUI.Builder(this)
+                .setSignInType(SignInUI.PIN_FORM)
+                .setTitle("Facebook")
+                .setSubtitle("Connecting the world")
+                .setFingerprintSignInEnabled(false)
+                .setEmailSignInEnabled(false)
+                .setPinAsHidden(false)
+                .setPinLength(6)
+                .build()
+        }
+
+
         fingerprint_only.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.FINGERPRINT_FORM)
@@ -92,6 +105,7 @@ class TestActivity : AppCompatActivity() {
                 Log.d(TAG, signInType)
                 Log.d(TAG, data!!.getStringExtra(SignInUI.PARAM_EMAIL) + "")
                 Log.d(TAG, data!!.getStringExtra(SignInUI.PARAM_PASSWORD) + "")
+                Log.d(TAG, data!!.getStringExtra(SignInUI.PARAM_PIN) + "")
                 Log.d("TEST_ACTIVITY", data.toString())
                 // jack@gmail.com
             }
