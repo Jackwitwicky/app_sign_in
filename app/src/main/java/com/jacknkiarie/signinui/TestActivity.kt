@@ -1,5 +1,6 @@
 package com.jacknkiarie.signinui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.jacknkiarie.signinui.models.SignInUI
@@ -75,5 +76,9 @@ class TestActivity : AppCompatActivity() {
                 .setEmailSignInEnabled(true)
                 .build()
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
