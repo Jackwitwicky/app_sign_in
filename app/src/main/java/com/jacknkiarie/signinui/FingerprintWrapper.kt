@@ -1,12 +1,14 @@
 package com.jacknkiarie.signinui
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import com.jacknkiarie.signinui.models.SignInUI
 import java.util.concurrent.Executor
 
 class FingerprintWrapper(val context: AppCompatActivity) {
@@ -29,6 +31,10 @@ class FingerprintWrapper(val context: AppCompatActivity) {
                     Toast.makeText(context,
                         "Authentication error: $errString", Toast.LENGTH_SHORT)
                         .show()
+                    val fingerprintIntent = Intent()
+                    fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
+                    context.setResult(SignInUI.RESULT_CANCEL, fingerprintIntent)
+                    context.finish()
                 }
 
                 override fun onAuthenticationSucceeded(
@@ -37,6 +43,10 @@ class FingerprintWrapper(val context: AppCompatActivity) {
                     Toast.makeText(context,
                         "Authentication succeeded!", Toast.LENGTH_SHORT)
                         .show()
+                    val fingerprintIntent = Intent()
+                    fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
+                    context.setResult(SignInUI.RESULT_OK, fingerprintIntent)
+                    context.finish()
                 }
 
                 override fun onAuthenticationFailed() {
@@ -44,6 +54,10 @@ class FingerprintWrapper(val context: AppCompatActivity) {
                     Toast.makeText(context, "Authentication failed",
                         Toast.LENGTH_SHORT)
                         .show()
+                    val fingerprintIntent = Intent()
+                    fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
+                    context.setResult(SignInUI.RESULT_CANCEL, fingerprintIntent)
+                    context.finish()
                 }
             })
 
@@ -65,15 +79,27 @@ class FingerprintWrapper(val context: AppCompatActivity) {
             BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
                 Log.e("MY_APP_TAG", "No biometric features available on this device.")
                 Toast.makeText(context, R.string.error_fingerprint_not_present, Toast.LENGTH_SHORT).show()
+                val fingerprintIntent = Intent()
+                fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
+                context.setResult(SignInUI.RESULT_CANCEL, fingerprintIntent)
+                context.finish()
             }
             BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
                 Log.e("MY_APP_TAG", "Biometric features are currently unavailable.")
                 Toast.makeText(context, R.string.error_fingerprint_not_available, Toast.LENGTH_SHORT).show()
+                val fingerprintIntent = Intent()
+                fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
+                context.setResult(SignInUI.RESULT_CANCEL, fingerprintIntent)
+                context.finish()
             }
             BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
                 Log.e("MY_APP_TAG", "The user hasn't associated " +
                         "any biometric credentials with their account.")
                 Toast.makeText(context, R.string.error_fingerprint_not_setup, Toast.LENGTH_SHORT).show()
+                val fingerprintIntent = Intent()
+                fingerprintIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.FINGERPRINT_FORM)
+                context.setResult(SignInUI.RESULT_CANCEL, fingerprintIntent)
+                context.finish()
             }
         }
 
