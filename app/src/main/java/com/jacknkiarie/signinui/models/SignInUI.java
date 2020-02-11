@@ -27,6 +27,8 @@ public class SignInUI {
     public static final String EXTRA_IS_EMAIL_ENABLED = "EXTRA_IS_EMAIL_ENABLED";
     public static final String EXTRA_IS_FINGEPRINT_ENABLED = "EXTRA_IS_FINGEPRINT_ENABLED";
 
+    public static final String PARAM_SIGN_IN_TYPE = "PARAM_SIGN_IN_TYPE";
+    public static final String PARAM_RESULT_STATUS = "PARAM_RESULT_STATUS";
     public static final String PARAM_EMAIL = "PARAM_EMAIL";
     public static final String PARAM_PASSWORD = "PARAM_PASSWORD";
 
