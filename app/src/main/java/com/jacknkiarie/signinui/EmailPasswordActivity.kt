@@ -4,26 +4,21 @@ import android.content.Intent
 
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_email_password.*
-import android.util.Log
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricManager
-import androidx.biometric.BiometricPrompt
 
-import androidx.core.content.ContextCompat
 import com.jacknkiarie.signinui.models.FormValidator
-import java.util.concurrent.Executor
+import com.jacknkiarie.signinui.models.SignInUI
 
 class EmailPasswordActivity : AppCompatActivity() {
-
-    private lateinit var executor: Executor
-    private lateinit var biometricPrompt: BiometricPrompt
-    private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private var passwordLength: Int = SignInUI.DEFAULT_PASSWORD_LENGTH
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_password)
+
+        val fingerprintWrapper = FingerprintWrapper(this)
 
         email_password_pin_login.setOnClickListener {
             val pinLoginIntent = Intent(this@EmailPasswordActivity, PinActivity::class.java)
@@ -31,19 +26,45 @@ class EmailPasswordActivity : AppCompatActivity() {
         }
 
         email_password_fingerprint_login.setOnClickListener {
-            checkFingerprintSupport()
+            fingerprintWrapper.checkFingerprintSupportAndAuthenticate()
         }
 
         email_password_login_button.setOnClickListener{
             if(validateFields()) {
-                Toast.makeText(this@EmailPasswordActivity, "Okay", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                Toast.makeText(this@EmailPasswordActivity, "Not okay", Toast.LENGTH_SHORT).show()
+                val emailIntent = Intent()
+                emailIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.EMAIL_PASSWORD_FORM)
+                emailIntent.putExtra(SignInUI.PARAM_EMAIL, email_password_email_field.text.toString())
+                emailIntent.putExtra(SignInUI.PARAM_PASSWORD, email_password_password_field.text.toString())
+                setResult(SignInUI.RESULT_OK, emailIntent)
+                finish()
             }
         }
 
-        setupFingerprintSensor()
+        setupUI()
+    }
+
+    private fun setupUI() {
+        val isPinEnabled = intent.getBooleanExtra(SignInUI.EXTRA_IS_PIN_ENABLED, false)
+        val isFingerprintEnabled = intent.getBooleanExtra(SignInUI.EXTRA_IS_FINGEPRINT_ENABLED, false)
+        val title = intent.getStringExtra(SignInUI.EXTRA_TITLE)
+        val subtitle = intent.getStringExtra(SignInUI.EXTRA_SUBTITLE)
+        passwordLength = intent.getIntExtra(SignInUI.EXTRA_PASSWORD_LENGTH, SignInUI.DEFAULT_PASSWORD_LENGTH)
+
+        if(title != null && title.isNotEmpty()) {
+            email_password_welcome.text = title
+        }
+
+        if(subtitle != null && subtitle.isNotEmpty()) {
+            email_password_intro.text = subtitle
+        }
+
+        if (!isPinEnabled) {
+            email_password_pin_login.visibility = View.GONE
+        }
+
+        if (!isFingerprintEnabled) {
+            email_password_fingerprint_login.visibility = View.GONE
+        }
     }
 
     private fun validateFields() : Boolean {
@@ -54,7 +75,7 @@ class EmailPasswordActivity : AppCompatActivity() {
             email_password_email_field.error = emailValidator.responseMessage
         }
 
-        val passwordValidator = formValidator.validatePassword(email_password_password_field.text.toString())
+        val passwordValidator = formValidator.validatePassword(email_password_password_field.text.toString(), passwordLength)
         if(!passwordValidator.isFormValid()) {
             email_password_password_field.error = passwordValidator.responseMessage
         }
@@ -62,63 +83,11 @@ class EmailPasswordActivity : AppCompatActivity() {
         return formValidator.isFormValid
     }
 
-    fun checkFingerprintSupport() {
-        val biometricManager = BiometricManager.from(this)
-        when (biometricManager.canAuthenticate()) {
-            BiometricManager.BIOMETRIC_SUCCESS -> {
-                biometricPrompt.authenticate(promptInfo)
-                Log.d("MY_APP_TAG", "App can authenticate using biometrics.")
-            }
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-                Log.e("MY_APP_TAG", "No biometric features available on this device.")
-                Toast.makeText(this@EmailPasswordActivity, R.string.error_fingerprint_not_present, Toast.LENGTH_SHORT).show()
-            }
-            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-                Log.e("MY_APP_TAG", "Biometric features are currently unavailable.")
-                Toast.makeText(this@EmailPasswordActivity, R.string.error_fingerprint_not_available, Toast.LENGTH_SHORT).show()
-            }
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                Log.e("MY_APP_TAG", "The user hasn't associated " +
-                        "any biometric credentials with their account.")
-                Toast.makeText(this@EmailPasswordActivity, R.string.error_fingerprint_not_setup, Toast.LENGTH_SHORT).show()
-            }
-        }
-
-    }
-
-    fun setupFingerprintSensor() {
-        executor = ContextCompat.getMainExecutor(this)
-        biometricPrompt = BiometricPrompt(this, executor,
-            object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationError(errorCode: Int,
-                                                   errString: CharSequence) {
-                    super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(applicationContext,
-                        "Authentication error: $errString", Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-                override fun onAuthenticationSucceeded(
-                    result: BiometricPrompt.AuthenticationResult) {
-                    super.onAuthenticationSucceeded(result)
-                    Toast.makeText(applicationContext,
-                        "Authentication succeeded!", Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-                override fun onAuthenticationFailed() {
-                    super.onAuthenticationFailed()
-                    Toast.makeText(applicationContext, "Authentication failed",
-                        Toast.LENGTH_SHORT)
-                        .show()
-                }
-            })
-
-        promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Biometric login for my app")
-            .setSubtitle("Log in using your fingerprint credential")
-            .setNegativeButtonText("Use account password")
-            .build()
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val emailIntent = Intent()
+        emailIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.EMAIL_PASSWORD_FORM)
+        setResult(SignInUI.RESULT_CANCEL, emailIntent)
+        finish()
     }
 }
