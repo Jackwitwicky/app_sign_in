@@ -31,7 +31,6 @@ class PinActivity : AppCompatActivity() {
                 val pinIntent = Intent()
                 pinIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.PIN_FORM)
                 pinIntent.putExtra(SignInUI.PARAM_PIN, pin_verification_code.text.toString())
-                pinIntent.putExtra(SignInUI.PARAM_PASSWORD, email_password_password_field.text.toString())
                 setResult(SignInUI.RESULT_OK, pinIntent)
                 finish()
             }
