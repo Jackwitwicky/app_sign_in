@@ -119,7 +119,6 @@ class PinActivity : AppCompatActivity() {
         else if(view.id == R.id.pin_email_login){
             val homeIntent = Intent(this,EmailPasswordActivity::class.java)
             startActivityForResult(homeIntent, SignInUI.REQUEST_CODE)
-            finish()
         }
         }
 
