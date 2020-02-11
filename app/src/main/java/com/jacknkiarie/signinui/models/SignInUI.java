@@ -29,11 +29,13 @@ public class SignInUI {
     public static final String EXTRA_IS_PIN_ENABLED = "EXTRA_IS_PIN_ENABLED";
     public static final String EXTRA_IS_EMAIL_ENABLED = "EXTRA_IS_EMAIL_ENABLED";
     public static final String EXTRA_IS_FINGEPRINT_ENABLED = "EXTRA_IS_FINGEPRINT_ENABLED";
+    public static final String EXTRA_IS_PIN_HIDDEN = "EXTRA_IS_PIN_HIDDEN";
 
     public static final String PARAM_SIGN_IN_TYPE = "PARAM_SIGN_IN_TYPE";
     public static final String PARAM_RESULT_STATUS = "PARAM_RESULT_STATUS";
     public static final String PARAM_EMAIL = "PARAM_EMAIL";
     public static final String PARAM_PASSWORD = "PARAM_PASSWORD";
+    public static final String PARAM_PIN = "PARAM_PIN";
 
     private String signInType;
 
@@ -58,6 +60,7 @@ public class SignInUI {
             pinIntent.putExtra(EXTRA_TITLE, builder.title);
             pinIntent.putExtra(EXTRA_SUBTITLE, builder.subtitle);
             pinIntent.putExtra(EXTRA_PIN_LENGTH, builder.pinLength);
+            pinIntent.putExtra(EXTRA_IS_PIN_HIDDEN, builder.isPinHidden);
             pinIntent.putExtra(EXTRA_IS_EMAIL_ENABLED, builder.isEmailSignInEnabled);
             pinIntent.putExtra(EXTRA_IS_FINGEPRINT_ENABLED, builder.isFingerprintSignInEnabled);
             builder.context.startActivityForResult(pinIntent, REQUEST_CODE);
@@ -82,6 +85,7 @@ public class SignInUI {
         private boolean isEmailSignInEnabled = false;
         private boolean isPinSignInEnabled = false;
         private boolean isFingerprintSignInEnabled = false;
+        private boolean isPinHidden = true;
 
         public Builder(AppCompatActivity context) {
             this.context = context;
@@ -113,17 +117,22 @@ public class SignInUI {
         }
 
         public Builder setEmailSignInEnabled(boolean emailSignInEnabled) {
-            isEmailSignInEnabled = emailSignInEnabled;
+            this.isEmailSignInEnabled = emailSignInEnabled;
             return this;
         }
 
         public Builder setPinSignInEnabled(boolean pinSignInEnabled) {
-            isPinSignInEnabled = pinSignInEnabled;
+            this.isPinSignInEnabled = pinSignInEnabled;
             return this;
         }
 
         public Builder setFingerprintSignInEnabled(boolean fingerprintSignInEnabled) {
-            isFingerprintSignInEnabled = fingerprintSignInEnabled;
+            this.isFingerprintSignInEnabled = fingerprintSignInEnabled;
+            return this;
+        }
+
+        public Builder setPinAsHidden(boolean isPinHidden) {
+            this.isPinHidden = isPinHidden;
             return this;
         }
 

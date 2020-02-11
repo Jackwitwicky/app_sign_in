@@ -31,6 +31,8 @@
     <string name="pin_ten">10</string>
     <string name="pin_enter_pin_prompt">Enter Pin</string>
     <string name="pin_cancel">Cancel</string>
+    <string name="error_pin_blank_pin">Pin cannot be blank</string>
+    <string name="error_pin_invalid_pin_length">Pin cannot be less than %d</string>
 
     <!--    finger print values-->
     <string name="fingerprint_prompt_button">Prompt Fingerprint</string>
