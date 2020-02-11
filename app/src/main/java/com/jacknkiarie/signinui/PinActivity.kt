@@ -118,7 +118,7 @@ class PinActivity : AppCompatActivity() {
         }
         else if(view.id == R.id.pin_email_login){
             val homeIntent = Intent(this,EmailPasswordActivity::class.java)
-            startActivity(homeIntent)
+            startActivityForResult(homeIntent, SignInUI.REQUEST_CODE)
             finish()
         }
         }
@@ -141,6 +141,13 @@ class PinActivity : AppCompatActivity() {
         val pinIntent = Intent()
         pinIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.PIN_FORM)
         setResult(SignInUI.RESULT_CANCEL, pinIntent)
+        finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        setResult(resultCode, data)
         finish()
     }
 
