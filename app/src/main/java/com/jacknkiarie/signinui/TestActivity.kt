@@ -19,8 +19,6 @@ class TestActivity : AppCompatActivity() {
         email_only.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.EMAIL_PASSWORD_FORM)
-                .setTitle("Facebook")
-                .setSubtitle("Connecting the world")
                 .setPasswordLength(6)
                 .setFingerprintSignInEnabled(false)
                 .setPinSignInEnabled(false)
@@ -30,8 +28,6 @@ class TestActivity : AppCompatActivity() {
         email_with_pin.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.EMAIL_PASSWORD_FORM)
-                .setTitle("Facebook")
-                .setSubtitle("Connecting the world")
                 .setPasswordLength(6)
                 .setPinSignInEnabled(true)
                 .setFingerprintSignInEnabled(false)
@@ -41,8 +37,6 @@ class TestActivity : AppCompatActivity() {
         email_with_pin_and_fingerprint.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.EMAIL_PASSWORD_FORM)
-                .setTitle("Facebook")
-                .setSubtitle("Connecting the world")
                 .setPasswordLength(6)
                 .setPinSignInEnabled(true)
                 .setFingerprintSignInEnabled(true)
@@ -54,8 +48,6 @@ class TestActivity : AppCompatActivity() {
         pin_only.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.PIN_FORM)
-                .setTitle("Facebook")
-                .setSubtitle("Connecting the world")
                 .setFingerprintSignInEnabled(true)
                 .setEmailSignInEnabled(true)
                 .setPinAsHidden(true)
@@ -66,8 +58,6 @@ class TestActivity : AppCompatActivity() {
         pin_with_email.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.PIN_FORM)
-                .setTitle("Facebook")
-                .setSubtitle("Connecting the world")
                 .setFingerprintSignInEnabled(true)
                 .setEmailSignInEnabled(true)
                 .setPinAsHidden(true)
@@ -79,8 +69,6 @@ class TestActivity : AppCompatActivity() {
         fingerprint_only.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.FINGERPRINT_FORM)
-                .setTitle("Facebook")
-                .setSubtitle("Connecting the world")
                 .setPinSignInEnabled(false)
                 .setEmailSignInEnabled(false)
                 .build()
@@ -89,8 +77,6 @@ class TestActivity : AppCompatActivity() {
         fingerprint_with_pin.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.FINGERPRINT_FORM)
-                .setTitle("Facebook")
-                .setSubtitle("Connecting the world")
                 .setPinSignInEnabled(true)
                 .setEmailSignInEnabled(false)
                 .build()
@@ -99,8 +85,6 @@ class TestActivity : AppCompatActivity() {
         fingerprint_with_pin_and_email.setOnClickListener {
             SignInUI.Builder(this)
                 .setSignInType(SignInUI.FINGERPRINT_FORM)
-                .setTitle("Facebook")
-                .setSubtitle("Connecting the world")
                 .setPinSignInEnabled(true)
                 .setEmailSignInEnabled(true)
                 .build()
