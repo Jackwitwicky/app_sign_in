@@ -3,14 +3,20 @@ package com.jacknkiarie.signinui.models;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.jacknkiarie.signinui.EmailPasswordActivity;
+import com.jacknkiarie.signinui.FingerprintActivity;
 import com.jacknkiarie.signinui.PinActivity;
 
 public class SignInUI {
     // constants
     public static final String EMAIL_PASSWORD_FORM = "EMAIL_PASSWORD_FORM";
     public static final String PIN_FORM = "PIN_FORM";
-    public static final String FINGEPRINT_FORM = "FINGERPRINT_FORM";
+    public static final String FINGERPRINT_FORM = "FINGERPRINT_FORM";
+    public static final int REQUEST_CODE = 100;
+    public static final int RESULT_OK = 69;
+    public static final int RESULT_CANCEL = 77;
 
     public static final int DEFAULT_PASSWORD_LENGTH = 4;
     public static final int DEFAULT_PIN_LENGTH = 4;
@@ -23,6 +29,13 @@ public class SignInUI {
     public static final String EXTRA_IS_PIN_ENABLED = "EXTRA_IS_PIN_ENABLED";
     public static final String EXTRA_IS_EMAIL_ENABLED = "EXTRA_IS_EMAIL_ENABLED";
     public static final String EXTRA_IS_FINGEPRINT_ENABLED = "EXTRA_IS_FINGEPRINT_ENABLED";
+    public static final String EXTRA_IS_PIN_HIDDEN = "EXTRA_IS_PIN_HIDDEN";
+
+    public static final String PARAM_SIGN_IN_TYPE = "PARAM_SIGN_IN_TYPE";
+    public static final String PARAM_RESULT_STATUS = "PARAM_RESULT_STATUS";
+    public static final String PARAM_EMAIL = "PARAM_EMAIL";
+    public static final String PARAM_PASSWORD = "PARAM_PASSWORD";
+    public static final String PARAM_PIN = "PARAM_PIN";
 
     private String signInType;
 
@@ -40,21 +53,30 @@ public class SignInUI {
             emailIntent.putExtra(EXTRA_PASSWORD_LENGTH, builder.passwordLength);
             emailIntent.putExtra(EXTRA_IS_PIN_ENABLED, builder.isPinSignInEnabled);
             emailIntent.putExtra(EXTRA_IS_FINGEPRINT_ENABLED, builder.isFingerprintSignInEnabled);
-            builder.context.startActivity(emailIntent);
+            builder.context.startActivityForResult(emailIntent, REQUEST_CODE);
         }
         else if(signInType.equals(PIN_FORM)) {
             Intent pinIntent = new Intent(builder.context, PinActivity.class);
             pinIntent.putExtra(EXTRA_TITLE, builder.title);
             pinIntent.putExtra(EXTRA_SUBTITLE, builder.subtitle);
             pinIntent.putExtra(EXTRA_PIN_LENGTH, builder.pinLength);
+            pinIntent.putExtra(EXTRA_IS_PIN_HIDDEN, builder.isPinHidden);
             pinIntent.putExtra(EXTRA_IS_EMAIL_ENABLED, builder.isEmailSignInEnabled);
             pinIntent.putExtra(EXTRA_IS_FINGEPRINT_ENABLED, builder.isFingerprintSignInEnabled);
-            builder.context.startActivity(pinIntent);
+            builder.context.startActivityForResult(pinIntent, REQUEST_CODE);
+        }
+        else if(signInType.equals(FINGERPRINT_FORM)) {
+            Intent fingerprintIntent = new Intent(builder.context, FingerprintActivity.class);
+            fingerprintIntent.putExtra(EXTRA_TITLE, builder.title);
+            fingerprintIntent.putExtra(EXTRA_SUBTITLE, builder.subtitle);
+            fingerprintIntent.putExtra(EXTRA_IS_EMAIL_ENABLED, builder.isEmailSignInEnabled);
+            fingerprintIntent.putExtra(EXTRA_IS_PIN_ENABLED, builder.isPinSignInEnabled);
+            builder.context.startActivityForResult(fingerprintIntent, REQUEST_CODE);
         }
     }
 
     public static class Builder {
-        private Context context;
+        private AppCompatActivity context;
         private String signInType;
         private String title = "";
         private String subtitle = "";
@@ -63,8 +85,9 @@ public class SignInUI {
         private boolean isEmailSignInEnabled = false;
         private boolean isPinSignInEnabled = false;
         private boolean isFingerprintSignInEnabled = false;
+        private boolean isPinHidden = true;
 
-        public Builder(Context context) {
+        public Builder(AppCompatActivity context) {
             this.context = context;
         }
 
@@ -94,21 +117,26 @@ public class SignInUI {
         }
 
         public Builder setEmailSignInEnabled(boolean emailSignInEnabled) {
-            isEmailSignInEnabled = emailSignInEnabled;
+            this.isEmailSignInEnabled = emailSignInEnabled;
             return this;
         }
 
         public Builder setPinSignInEnabled(boolean pinSignInEnabled) {
-            isPinSignInEnabled = pinSignInEnabled;
+            this.isPinSignInEnabled = pinSignInEnabled;
             return this;
         }
 
         public Builder setFingerprintSignInEnabled(boolean fingerprintSignInEnabled) {
-            isFingerprintSignInEnabled = fingerprintSignInEnabled;
+            this.isFingerprintSignInEnabled = fingerprintSignInEnabled;
             return this;
         }
 
-        public SignInUI create() {
+        public Builder setPinAsHidden(boolean isPinHidden) {
+            this.isPinHidden = isPinHidden;
+            return this;
+        }
+
+        public SignInUI build() {
             return new SignInUI(this);
         }
     }

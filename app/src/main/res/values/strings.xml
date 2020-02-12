@@ -31,11 +31,15 @@
     <string name="pin_ten">10</string>
     <string name="pin_enter_pin_prompt">Enter Pin</string>
     <string name="pin_cancel">Cancel</string>
+    <string name="error_pin_blank_pin">Pin cannot be blank</string>
+    <string name="error_pin_invalid_pin_length">Pin cannot be less than %d</string>
 
     <!--    finger print values-->
+    <string name="fingerprint_prompt_button">Prompt Fingerprint</string>
     <string name="error_fingerprint_not_present">Sorry. Your device does not support fingerprint sign in</string>
     <string name="error_fingerprint_not_setup">Please setup your fingerprint in settings to use this feature</string>
     <string name="error_fingerprint_not_available">Fingerprint features are currently unavailable.</string>
+    <string name="fingerprint_password_login">Use Password</string>
 
 
 </resources>

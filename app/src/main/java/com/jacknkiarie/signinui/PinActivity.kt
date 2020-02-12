@@ -3,9 +3,11 @@ package com.jacknkiarie.signinui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.view.View
 import android.widget.Toast
 import com.jacknkiarie.signinui.models.FormValidator
+import com.jacknkiarie.signinui.models.SignInUI
 import kotlinx.android.synthetic.main.activity_email_password.*
 import kotlinx.android.synthetic.main.activity_pin.*
 
@@ -13,10 +15,48 @@ class PinActivity : AppCompatActivity() {
 
     var currentPinInput = ""
     var initpin = ""
+    private var pinLength = SignInUI.DEFAULT_PIN_LENGTH
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin)
+        val fingerprintWrapper = FingerprintWrapper(this)
+
+        pin_fingerprint_login.setOnClickListener{
+            fingerprintWrapper.checkFingerprintSupportAndAuthenticate()
+        }
+
+        pin_check_btn.setOnClickListener{
+            if (validateFields()) {
+                val pinIntent = Intent()
+                pinIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.PIN_FORM)
+                pinIntent.putExtra(SignInUI.PARAM_PIN, pin_verification_code.text.toString())
+                setResult(SignInUI.RESULT_OK, pinIntent)
+                finish()
+            }
+        }
+
+        setupUI()
+    }
+
+    private fun setupUI() {
+        val isEmailEnabled = intent.getBooleanExtra(SignInUI.EXTRA_IS_EMAIL_ENABLED, false)
+        val isFingerprintEnabled = intent.getBooleanExtra(SignInUI.EXTRA_IS_FINGEPRINT_ENABLED, false)
+        pinLength = intent.getIntExtra(SignInUI.EXTRA_PIN_LENGTH, SignInUI.DEFAULT_PIN_LENGTH)
+        val isPinHidden = intent.getBooleanExtra(SignInUI.EXTRA_IS_PIN_HIDDEN, true)
+
+        if (!isEmailEnabled) {
+            pin_email_login.visibility = View.GONE
+        }
+
+        if (!isFingerprintEnabled) {
+            pin_fingerprint_login.visibility = View.GONE
+        }
+
+        pin_verification_code.setMaxLength(pinLength)
+        if (!isPinHidden) {
+            pin_verification_code.inputType = InputType.TYPE_CLASS_NUMBER
+        }
     }
 
     fun onClick(view: View) {
@@ -76,30 +116,16 @@ class PinActivity : AppCompatActivity() {
             pin_verification_code.setText(initpin)
 
         }
-        else if(view.id == R.id.email_password_pin_login){
+        else if(view.id == R.id.pin_email_login){
             val homeIntent = Intent(this,EmailPasswordActivity::class.java)
-            startActivity(homeIntent)
-            finish()
+            startActivityForResult(homeIntent, SignInUI.REQUEST_CODE)
         }
-
-
-        pin_check_btn.setOnClickListener{
-            if (validateFields()) {
-                Toast.makeText(this@PinActivity, "Welcome", Toast.LENGTH_SHORT).show()
-                val homeIntent = Intent(this,EmailPasswordActivity::class.java)
-                startActivity(homeIntent)
-                finish()
-            }
-
-        }
-
-
         }
 
     private fun validateFields() : Boolean {
         val formValidator = FormValidator(this@PinActivity)
 
-        val pinValidator = formValidator.validatePin(pin_verification_code.text.toString())
+        val pinValidator = formValidator.validatePin(pin_verification_code.text.toString(), pinLength)
         if (!pinValidator.isFormValid()) {
             pin_verification_code.error = pinValidator.responseMessage
             Toast.makeText(this@PinActivity, pin_verification_code.error, Toast.LENGTH_SHORT).show()
@@ -109,5 +135,19 @@ class PinActivity : AppCompatActivity() {
         return formValidator.isFormValid
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val pinIntent = Intent()
+        pinIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.PIN_FORM)
+        setResult(SignInUI.RESULT_CANCEL, pinIntent)
+        finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        setResult(resultCode, data)
+        finish()
+    }
 
 }

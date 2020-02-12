@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FingerprintActivity">
+
+    <TextView
+        android:id="@+id/fingerprint_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_password_welcome"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"/>
+
+    <TextView
+        android:id="@+id/fingerprint_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_password_intro"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:layout_below="@id/fingerprint_welcome"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@id/fingerprint_welcome"
+        android:layout_alignStart="@id/fingerprint_welcome"/>
+
+    <ImageView
+        android:id="@+id/fingerprint_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_fingerprint_primary_24dp"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/fingerprint_prompt_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/fingerprint_icon"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button_bg"
+        android:text="@string/fingerprint_prompt_button"
+        android:textColor="@android:color/white"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"/>
+
+    <TextView
+        android:id="@+id/fingerprint_password_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fingerprint_password_login"
+        android:layout_below="@id/fingerprint_prompt_button"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/fingerprint_pin_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_password_pin_login"
+        android:layout_below="@id/fingerprint_prompt_button"
+        android:layout_alignBaseline="@id/fingerprint_password_login"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"/>
+
+</RelativeLayout>
