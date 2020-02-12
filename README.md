@@ -115,7 +115,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Author
 
  **Jack Kiarie** - *Initial work* - [Other Works](https://incobeta.com)
- **Daniel** - *Assisted work* - [Other Works](https://incobeta.com)
+ **Daniel Katungi** - *Assisted work* - [Other Works](https://incobeta.com)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
