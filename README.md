@@ -90,14 +90,6 @@ That's it! That is all you need to display a sign in screen that prompts the use
                 .setSubtitle("The best log tracking app")
 
 ```
-
-Model
-
-```
-copy the **Person.java** file to your project. This is used to store details of a particular contact
-
-```
-
 ### NB
 The builder class expects a sign_in _type parameter to be passed as a minimum.
  Attempting to build an SignInUi without having specified the sign_in_type results in a Illegal State Exception 
@@ -115,7 +107,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Author
 
  **Jack Kiarie** - *Initial work* - [Other Works](https://incobeta.com)
- **Daniel Katungi** - *Assisted work* - [Other Works](https://incobeta.com)
+ **Daniel Katungi** - *Assisted work* - [Other Works](https://www.github.com/katungi)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
