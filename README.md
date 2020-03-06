@@ -96,7 +96,7 @@ The builder class expects a sign_in _type parameter to be passed as a minimum.
 
 ## Built With
 
-* [Ubuntu 18.04.3(https://www.ubuntu.com/desktop/1710) - Operating System Used
+* [Ubuntu 18.04.3(https://www.ubuntu.com/desktop/) - Operating System Used
 * [Android Studio](https://developer.android.com/studio/index.html) - Development Environment
 * Love - Key ingredient
 
