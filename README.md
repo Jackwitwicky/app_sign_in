@@ -60,7 +60,7 @@ Then next step is to add the library dependency on your app build.grade file
 //on your app build.gradle file, add the sign in ui
 
 dependencies {
-	        implementation 'com.github.Jackwitwicky:app_sign_in:Tag'
+	        implementation 'com.github.Jackwitwicky:app_sign_in:v0.0.4'
 	}
 ```
 
@@ -88,6 +88,27 @@ That's it! That is all you need to display a sign in screen that prompts the use
                 .setPasswordLength(6) - This is used to specifiy the validation requirements for the email passsowrd page
                 .setTitle("Logger")
                 .setSubtitle("The best log tracking app")
+
+```
+
+In your calling activity. Implement the onActivityResult method to receive result of the form so as to perform follow up
+actions. e.g displaying a loading UI and calling your back end for validation.
+
+```
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+    
+            if (requestCode == SignInUI.REQUEST_CODE) {
+                if (resultCode == SignInUI.RESULT_OK) {
+    
+                    // TODO the user provided correct values. Send request to validate credentials
+                }
+                else {
+                    // the user has opted out of the sign in process. Close the app
+                }
+            }
+        }
+
 
 ```
 ### NB
