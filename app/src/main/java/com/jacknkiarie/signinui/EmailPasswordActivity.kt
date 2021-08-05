@@ -40,6 +40,13 @@ class EmailPasswordActivity : AppCompatActivity() {
             }
         }
 
+        email_password_cancel_button.setOnClickListener {
+            val emailIntent = Intent()
+            emailIntent.putExtra(SignInUI.PARAM_SIGN_IN_TYPE, SignInUI.EMAIL_PASSWORD_FORM)
+            setResult(SignInUI.RESULT_CANCEL, emailIntent)
+            finish()
+        }
+
         setupUI()
     }
 

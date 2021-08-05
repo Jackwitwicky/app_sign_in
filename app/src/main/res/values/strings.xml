@@ -7,6 +7,7 @@
     <string name="email_password_password">Password</string>
     <string name="email_password_forgot_password">Forgot Password</string>
     <string name="email_password_login_button">Login</string>
+    <string name="email_password_cancel_button">@android:string/cancel</string>
     <string name="email_password_pin_login">Use Pin</string>
     <string name="email_password_fingerprint_login">Use Fingerprint</string>
     <string name="email_pin_login">Use Password</string>
