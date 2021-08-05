@@ -100,8 +100,14 @@ actions. e.g displaying a loading UI and calling your back end for validation.
     
             if (requestCode == SignInUI.REQUEST_CODE) {
                 if (resultCode == SignInUI.RESULT_OK) {
-    
-                    // TODO the user provided correct values. Send request to validate credentials
+		    
+		    // check validation type user opted for - data?.getStringExtra(SignInUI.PARAM_SIGN_IN_TYPE)
+		    
+		    // email value - data?.getStringExtra(SignInUI.PARAM_EMAIL)
+		    // password value - data?.getStringExtra(SignInUI.PARAM_PASSWORD)
+		    // pin value - data?.getStringExtra(SignInUI.PARAM_PIN)
+		    
+		    // TODO the user provided correct values. Send request to validate credentials
                 }
                 else {
                     // the user has opted out of the sign in process. Close the app
