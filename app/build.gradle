@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 
@@ -8,7 +8,6 @@ android {
     compileSdkVersion 30 //checks the compiled sdk version
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.jacknkiarie.signinui"
         minSdkVersion 16
         targetSdkVersion 30 //the sdk version the app with run on
         versionCode 1
